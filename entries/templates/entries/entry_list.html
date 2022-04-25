@@ -1,0 +1,32 @@
+{% extends "entries/base.html" %}
+
+{% block content %}
+    <!-- <div class="card my-3 text-end text-white bg-dark">
+        <div class="card-body">
+            <button type="button" class="btn btn-outline-warning btn-lg disabled">
+                {% now "Y-m-d H:i" %}
+            </button>
+            <a href="{% url 'entry-create' %}">
+                <button type="button" class="btn btn-success btn-lg">Add a new entry</button>
+            </a>
+        </div>
+    </div> -->
+
+    <div class="card text-white bg-dark">
+        <ul class="list-group list-group-flush">
+        {% for entry in entry_list %}
+            <li class="list-group-item">
+                <button type="button" class="btn btn-outline-primary btn-lg disabled">
+                        {{ entry.date_created|date:'Y-m-d H:i' }}
+                </button>
+                
+                <h3 class="text-muted">
+                    <a href="{% url 'entry-detail' entry.id %}">
+                        {{ entry.title }}
+                    </a>
+                </h3>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

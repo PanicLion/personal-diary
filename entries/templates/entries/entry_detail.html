@@ -1,0 +1,30 @@
+{% extends "entries/base.html" %}
+
+{% block content %}
+
+<div class="card text-center">
+    <div class="card-header">
+        <div class="row" style="align-items: center;">
+            <div class="col-2">
+                <a href="{% url 'entry-update' entry.id %}">
+                    <button type="button" class="btn btn-warning">Edit</button>
+                </a>
+            </div>
+            <div class="col"><h3 class="card-title">{{ entry.title }}</h3></div>
+            <div class="col-2">
+                <a href="{% url 'entry-delete' entry.id %}">
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <h5 class="card-text">{{ entry.content }}</h5>
+      <!-- <p class="card-text">{{ entry.content }}</p> -->
+      <a href="#" class="btn btn-primary my-3">Go somewhere</a>
+    </div>
+    <div class="card-footer text-muted">
+        <h6 class="text-muted">{{ entry.date_created|date:'Y-m-d H:i' }}</h6>
+    </div>
+</div>
+{% endblock %}
